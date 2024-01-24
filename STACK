@@ -1,0 +1,56 @@
+class Node:
+  def __init__(self,x):
+    self.data=x
+    self.next=None
+class Stack:
+  def __init__(self):
+    self.top=None
+  def push(self):
+     x=int(input("Enter element to be inserted into stack:"))
+     new=Node(x)
+     if self.top is None:
+      self.top=new
+      self.top.next=None
+     else:
+      new.next=self.top
+      self.top=new
+  def pop(self):
+    if self.top is None:
+      print("STACK IS EMPTY!!")
+    elif self.top.next is None:
+      print("Popped element is:",self.top.data)
+      self.top=None
+    else:
+      temp=self.top
+      print("Popped element is:",self.top.data)
+      self.top=temp.next
+      temp=None
+  def display(self):
+    if self.top is None:
+      print("STACK IS EMPTY!")
+    else:
+      print("Elements of stack are:")
+      temp=self.top
+      while temp:
+        print(temp.data)
+        temp=temp.next
+      print("TOP OF THE STACK IS:",self.top.data)
+s=Stack()
+while(1):
+  print("enter the option from below")
+  print('1-PUSH OPERATION \n2-POP OPERATION \n3-DISPLAY \n4-EXIT')
+  option=int(input())
+  if option==1:
+    print('PUSH OPERATION')
+    print('---------------')
+    s.push()
+  elif option==2:
+    print('POP OPERATION')
+    print('-------------')
+    s.pop()
+  elif option==3:
+    print('DISPLAY')
+    print('-------')
+    s.display()
+  else:
+    break
