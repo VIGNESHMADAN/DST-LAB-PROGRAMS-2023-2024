@@ -1,0 +1,35 @@
+#EVALUATION OF POSTFIX
+def is_operand(char):
+    return char.isalnum()
+
+def evaluate_postfix(postfix_expression):
+    stack = []
+
+    for char in postfix_expression:
+        if is_operand(char):
+           
+            stack.append(float(char))
+        else:
+           
+            operand2 = stack.pop()
+            operand1 = stack.pop()
+
+            if char == '+':
+                result = operand1 + operand2
+            elif char == '-':
+                result = operand1 - operand2
+            elif char == '*':
+                result = operand1 * operand2
+            elif char == '/':
+                result = operand1 / operand2
+
+            stack.append(result)
+
+   
+    return stack.pop()
+
+
+postfix_expression = "1020*5+"
+result = evaluate_postfix(postfix_expression)
+print("Postfix Expression:", postfix_expression)
+print("Result:", result)
